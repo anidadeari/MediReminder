@@ -1,0 +1,6 @@
+@MediReminder_HostAddress = http://localhost:5234
+
+GET {{MediReminder_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
