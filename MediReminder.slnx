@@ -1,4 +1,3 @@
 <Solution>
-  <Project Path="../MediReminder.Tests/MediReminder.Tests.csproj" Id="dfdeac2b-3d7a-47d9-b951-1796ffa4106e" />
   <Project Path="MediReminder.csproj" />
 </Solution>
