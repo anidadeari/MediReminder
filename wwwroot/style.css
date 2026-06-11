@@ -1,0 +1,261 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #eef6ff, #f8fbff);
+    color: #1d2b3a;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #0f3d5e, #123f63);
+    color: white;
+    padding: 28px;
+    position: fixed;
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: white;
+    color: #0f3d5e;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    font-size: 24px;
+}
+
+.logo h2 {
+    margin: 0;
+}
+
+.logo p {
+    margin: 4px 0 0;
+    color: #cfe8ff;
+    font-size: 13px;
+}
+
+nav a {
+    display: block;
+    color: #eaf6ff;
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+    nav a:hover {
+        background: rgba(255, 255, 255, 0.14);
+    }
+
+.status-card {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: #ffce54;
+    border-radius: 50%;
+}
+
+.main-content {
+    margin-left: 280px;
+    padding: 36px;
+    width: calc(100% - 280px);
+}
+
+.hero {
+    background: linear-gradient(135deg, #176b9b, #48a6c9);
+    color: white;
+    padding: 34px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 18px 40px rgba(23, 107, 155, 0.25);
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.hero h1 {
+    margin: 8px 0;
+    font-size: 36px;
+    max-width: 760px;
+}
+
+.hero-text {
+    max-width: 760px;
+    opacity: 0.95;
+}
+
+.hero-card {
+    min-width: 220px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 22px;
+    border-radius: 20px;
+}
+
+.card {
+    background: white;
+    margin-top: 26px;
+    padding: 26px;
+    border-radius: 22px;
+    box-shadow: 0 12px 32px rgba(20, 49, 78, 0.08);
+}
+
+.section-title h2 {
+    margin: 0;
+    color: #113a5c;
+}
+
+.section-title p {
+    margin: 6px 0 20px;
+    color: #687789;
+}
+
+.section-title.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 14px;
+}
+
+    .form-grid.three {
+        grid-template-columns: 1fr 1fr 1fr auto;
+    }
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d7e1ea;
+    border-radius: 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+    input:focus {
+        border-color: #2d8fbd;
+        box-shadow: 0 0 0 4px rgba(45, 143, 189, 0.12);
+    }
+
+button {
+    background: linear-gradient(135deg, #176b9b, #0f3d5e);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+    button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(15, 61, 94, 0.2);
+    }
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.med-card {
+    border: 1px solid #e3edf5;
+    border-radius: 18px;
+    padding: 18px;
+    background: #fbfdff;
+}
+
+    .med-card h3 {
+        margin: 0 0 8px;
+        color: #113a5c;
+    }
+
+.badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #e7f5ff;
+    color: #176b9b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #113a5c;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    display: none;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+    .toast.show {
+        display: block;
+    }
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .form-grid,
+    .form-grid.three {
+        grid-template-columns: 1fr;
+    }
+}

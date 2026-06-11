@@ -11,6 +11,11 @@
     <None Remove="tests\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\script.js" />
+    <None Include="wwwroot\style.css" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />

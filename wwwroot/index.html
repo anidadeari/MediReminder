@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediReminder Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">💊</div>
+                <div>
+                    <h2>MediReminder</h2>
+                    <p>Smart Medication Care</p>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#login">Login</a>
+                <a href="#add">Add Medication</a>
+                <a href="#medications">My Medications</a>
+                <a href="#reminders">Reminders</a>
+            </nav>
+
+            <div class="status-card">
+                <span class="status-dot"></span>
+                <p id="loginStatus">Not logged in</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero">
+                <div>
+                    <p class="subtitle">SOA Final Project</p>
+                    <h1>Medication Reminder & Adherence Dashboard</h1>
+                    <p class="hero-text">
+                        Manage medication schedules, track intake history, and monitor upcoming reminders through a secure ASP.NET Core Web API.
+                    </p>
+                </div>
+
+                <div class="hero-card">
+                    <h3>System Status</h3>
+                    <p>API Connected</p>
+                    <strong>JWT Secured</strong>
+                </div>
+            </section>
+
+            <section id="login" class="card">
+                <div class="section-title">
+                    <h2>Login</h2>
+                    <p>Authenticate using your MediReminder account.</p>
+                </div>
+
+                <div class="form-grid">
+                    <input id="email" type="email" placeholder="Email address">
+                    <input id="password" type="password" placeholder="Password">
+                    <button onclick="login()">Login</button>
+                </div>
+            </section>
+
+            <section id="add" class="card">
+                <div class="section-title">
+                    <h2>Add Medication</h2>
+                    <p>Create a medication schedule for the authenticated user.</p>
+                </div>
+
+                <div class="form-grid three">
+                    <input id="name" placeholder="Medication name">
+                    <input id="dosage" placeholder="Dosage e.g. 500mg">
+                    <input id="frequency" placeholder="Frequency e.g. daily">
+                    <button onclick="addMedication()">Add Medication</button>
+                </div>
+            </section>
+
+            <section id="medications" class="card">
+                <div class="section-title row">
+                    <div>
+                        <h2>My Medications</h2>
+                        <p>List of medications stored in the database.</p>
+                    </div>
+                    <button onclick="getMedications()">Load Medications</button>
+                </div>
+
+                <div id="medicationList" class="cards-grid"></div>
+            </section>
+
+            <section id="reminders" class="card">
+                <div class="section-title row">
+                    <div>
+                        <h2>Upcoming Reminders</h2>
+                        <p>Upcoming medication reminders calculated by the backend service.</p>
+                    </div>
+                    <button onclick="getReminders()">Load Reminders</button>
+                </div>
+
+                <div id="reminderList" class="cards-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

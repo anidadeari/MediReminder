@@ -88,7 +88,6 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 
-    // Seed the first Admin if no Admin exists
     if (!db.Users.Any(u => u.Role == "Admin"))
     {
         var admin = new User
@@ -99,20 +98,28 @@ using (var scope = app.Services.CreateScope())
             Role = "Admin",
             CreatedAt = DateTime.UtcNow
         };
+
         db.Users.Add(admin);
         db.SaveChanges();
     }
 }
 
+// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Frontend static files from wwwroot
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
