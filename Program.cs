@@ -26,6 +26,7 @@ builder.Services.AddScoped<IReminderService, ReminderService>();
 
 // JWT Authentication
 var jwtKey = builder.Configuration["Jwt:Key"]!;
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -61,7 +62,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Enter JWT token below (without 'Bearer ' prefix)"
+        Description = "Enter JWT token below without the Bearer prefix."
     });
 
     c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
@@ -82,13 +83,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Auto-apply migrations and seed Admin user on startup
-using (var scope = app.Services.CreateScope())
+// Seed Admin user only if the database connection is available.
+// This prevents cloud deployment from crashing if database migration is not available.
+try
 {
+    using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
 
-    if (!db.Users.Any(u => u.Role == "Admin"))
+    if (db.Database.CanConnect() && !db.Users.Any(u => u.Role == "Admin"))
     {
         var admin = new User
         {
@@ -102,6 +104,10 @@ using (var scope = app.Services.CreateScope())
         db.Users.Add(admin);
         db.SaveChanges();
     }
+}
+catch
+{
+    // Prevent application crash during cloud deployment if the database is unavailable.
 }
 
 // Swagger
