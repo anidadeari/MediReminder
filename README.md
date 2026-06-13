@@ -1,112 +1,72 @@
 # MediReminder API
 
-A RESTful Web API built with ASP.NET Core (.NET 10) that helps patients and caregivers manage medication schedules, track intake history, and monitor adherence.
+A cloud-deployed RESTful Web API built with ASP.NET Core (.NET 10) that enables patients and caregivers to manage medication schedules, track medication intake, monitor adherence, and receive intelligent reminders.
 
 ## Project Overview
 
-MediReminder is a Service-Oriented Architecture (SOA) project developed for the SOA course at South East European University. The system enables users to register and authenticate securely using JWT tokens, manage medications with dosage details, log medication intake, view adherence statistics, receive upcoming dose reminders, and provides administrators with user management capabilities.
+MediReminder is a Service-Oriented Architecture (SOA) project developed as a final course project at South East European University. The application provides secure JWT-based authentication, medication management, medication intake tracking, adherence reporting, reminder calculation services, and administrative user management.
+
+The system follows a layered architecture using Controllers, Services, Repositories, and Entity Framework Core with PostgreSQL. Continuous Integration and Continuous Deployment (CI/CD) are implemented using GitHub Actions and Railway Cloud Platform.
 
 ## Technologies Used
 
-- ASP.NET Core Web API (.NET 10)
-- PostgreSQL with pgAdmin4
-- Entity Framework Core (Code-First)
-- JWT Bearer Authentication
-- BCrypt.Net for password hashing
-- Swagger / OpenAPI for documentation
-- Repository Pattern + Service Layer + Dependency Injection
+* ASP.NET Core Web API (.NET 10)
+* PostgreSQL Database
+* Entity Framework Core (Code-First)
+* JWT Bearer Authentication
+* BCrypt Password Hashing
+* Swagger / OpenAPI Documentation
+* Repository Pattern
+* Service Layer Architecture
+* Dependency Injection
+* GitHub Actions (CI/CD)
+* Railway Cloud Deployment
 
-## Features
+## Key Features
 
-### Authentication and Authorization
-- User registration and login with JWT
-- Role-based authorization (Admin / User)
-- Auto-seeded admin account on first run
-- Password hashing with BCrypt
+### Authentication & Authorization
+
+* User registration and login
+* JWT token generation and validation
+* Role-based access control (Admin/User)
+* Secure password hashing using BCrypt
 
 ### Medication Management
-- Full CRUD operations for medications
-- Filter active medications
-- Get medication statistics
 
-### Medication Logs
-- Record medication intake (taken/missed)
-- Add notes for each log entry
-- View historical logs
+* Create, update, retrieve, and delete medications
+* Track active medications
+* Generate medication statistics
 
-### Reminders (Complex Business Logic)
-- Calculate next dose time based on frequency
-- Generate adherence reports for any period
-- View upcoming reminders sorted by next dose time
+### Medication Intake Logs
 
-### Admin Features
-- View all registered users
-- Delete users
-- Register new administrators
+* Record taken or missed medications
+* Add notes for each intake record
+* Access historical medication logs
 
-## Prerequisites
+### Reminder Services
 
-- .NET 10 SDK
-- PostgreSQL
-- pgAdmin4
+* Calculate upcoming medication schedules
+* Generate adherence reports
+* Display upcoming reminders
 
-## Setup Instructions
+### Administration
 
-1. Clone the repository:
-   git clone https://github.com/anidadeari/MediReminder.git
+* Manage registered users
+* Register administrators
+* Remove user accounts
 
-2. Configure the database connection in appsettings.json
+## Deployment
 
-3. Run database migrations:
-   dotnet ef database update
+The application is deployed on Railway Cloud Platform and uses PostgreSQL as the production database.
 
-4. Run the application:
-   dotnet run
-
-5. Access Swagger UI at: https://localhost:7018/swagger
-
-## Default Admin Credentials
-
-On first run, an administrator account is automatically created:
-- Email: admin@medireminder.com
-- Password: Admin123!
-
-## API Endpoints
-
-### Authentication
-- POST /api/Auth/register - Register a new user
-- POST /api/Auth/login - Login and receive JWT token
-- POST /api/Auth/register-admin - Register a new admin (Admin only)
-
-### Users (Admin only)
-- GET /api/Users - Get all users
-- GET /api/Users/{id} - Get user by ID
-- DELETE /api/Users/{id} - Delete a user
-
-### Medications
-- GET /api/Medications - Get user medications
-- GET /api/Medications/active - Get active medications
-- GET /api/Medications/{id} - Get medication by ID
-- GET /api/Medications/{id}/stats - Get medication statistics
-- POST /api/Medications - Create a new medication
-- PUT /api/Medications/{id} - Update a medication
-- DELETE /api/Medications/{id} - Delete a medication
-
-### Medication Logs
-- GET /api/MedicationLogs/{medicationId} - Get logs for a medication
-- POST /api/MedicationLogs - Add a new log
-- DELETE /api/MedicationLogs/{id} - Delete a log
-
-### Reminders
-- GET /api/Reminders/next/{medicationId} - Get next dose time
-- GET /api/Reminders/adherence/{medicationId}?days=7 - Get adherence report
-- GET /api/Reminders/upcoming - Get upcoming reminders
+CI/CD automation is implemented through GitHub Actions, which automatically builds and tests the application whenever changes are pushed to the GitHub repository.
 
 ## Author
 
-Anida Deari (@anidadeari)
+**Anida Deari**
+South East European University
+Faculty of Contemporary Sciences and Technologies
 
 ## Course
 
-Service-Oriented Architecture (SOA) - Final Project
-South East European University
+Service-Oriented Architecture (SOA) – Final Project
